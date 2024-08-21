@@ -19,7 +19,7 @@ module.exports = (app) => {
         // save consumable
         const consumable = new Consumable({ title, ingredients, price });
         await consumable.save();
-
+        console.log("A consumable was added: " + consumable.title);
         res.status(201).json({ message: "Rätt tillagd" });
     });
 
@@ -29,6 +29,7 @@ module.exports = (app) => {
             const id = req.params.id;
             const result = await Consumable.findOneAndDelete({_id: id});
             if (!result) return res.status(404).json({ message: "Hittar inte maträtt." });
+            console.log("A consumable was deleted: " + result.title);
             return res.status(200).json({ message: "Maträtt har tagits bort." });
         } catch (error) {
             res.status(500).json({ error: "Server error." });
@@ -48,6 +49,7 @@ module.exports = (app) => {
             );
 
             if (!result) return res.status(404).json({ message: "Hittar inte maträtt." });
+            console.log("A consumable was updated.");
             res.status(200).json({ message: "Rätt uppdaterad", updatedConsumable: result });
         } catch (error) {
             return res.status(500).json({ error: "Server error" });
