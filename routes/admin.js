@@ -37,13 +37,20 @@ module.exports = (app) => {
 
     // update dish
     app.post("/admin/update/:id", async (req, res) => {
+        const id = req.params.id;
+        const newConsumable = req.body;
+
         try {
-            const id = req.params.id;
-            // ta in och ta emot de värden som ska uppdateras
-            const result = await Consumable.findOneAndUpdate({ _id: id });
+            const result = await Consumable.findOneAndUpdate(
+                { _id: id }, // find document by id
+                newConsumable, // new consumable to save
+                { new: true, runValidators: true }
+            );
+
             if (!result) return res.status(404).json({ message: "Hittar inte maträtt." });
+            res.status(200).json({ message: "Rätt uppdaterad", updatedConsumable: result });
         } catch (error) {
-            return res.status(500).json({ error: "Server error." });
+            return res.status(500).json({ error: "Server error" });
         }
     });
 
