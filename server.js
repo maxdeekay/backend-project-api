@@ -62,6 +62,7 @@ app.post("/login", async (req, res) => {
                 message: "Login successful",
                 token: token
             }
+            console.log("A user has logged in.");
             res.status(200).json({ response });
         }
 
@@ -82,6 +83,7 @@ app.post("/register", async (req, res) => {
         const user = new User({ username, password });
         await user.save();
 
+        console.log("A new user has been created.");
         res.status(201).json({ message: "User created!"} );
 
     } catch(error) {
