@@ -45,7 +45,7 @@ Nedan följer hur man kan använda sig av APIet:
   </tr>
 </table>
 
-Maträtter kommer som JSON-data i följande format:
+Maträtter kommer och skickas som JSON-data i följande format:
 ```json
 {
   "title": "title",
