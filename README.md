@@ -1,6 +1,8 @@
 <h1>REST API skapat för projektuppgiften i kursen DT207G</h1>
 Detta repository innehåller ett enklare REST API för att sköta lagring och hantering av maträtter samt inloggning och auth.
 
+APIet finns publicerat på följande länk: https://backend-project-api.onrender.com
+
 <h2>Användning</h2>
 Nedan följer hur man kan använda sig av APIet:
 <br>
